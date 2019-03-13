@@ -18,7 +18,8 @@ public class Report{
 		static SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");	
 		boolean type=false, signal_type=false, addr=false, bill=false, dept=false,
 				status=false, vendor=false;
-		String reportType="stats", year="",date_from="", date_to="";
+		String reportType="stats", // stats, phones
+				year="",date_from="", date_to="";
 		String title = "", billing_id="", department_id="";
 		boolean debug = false, needTotal = false;
 		List<ReportRow> rows = new ArrayList<>();
@@ -158,8 +159,73 @@ public class Report{
 				}
 				return department;
 		}
+		
 		public String find(){
-				return findStats();
+				if(reportType.equals("stats"))
+						return findStats();
+				else
+						return findPhoneRecords();
+		}
+		/*
+				select d.name department,p.phoneNumber phone,pl.name name from phones p         left join departments d on p.department_id=d.id                                 left join pline_phones pp on pp.phone_id=p.id                                   left join plines pl on pl.id = pp.line_id                                       order by department, phone limit 50;
+
+		 */
+		public String findPhoneRecords(){
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String msg = "";
+				String which_date = "";
+				String qq = "", qw="", qo="";
+				//
+				// qw is shared in all sqls
+				//
+				if(!department_id.equals("")){
+						if(!qw.equals("")) qw += " and ";
+						qw += " p.department_id=? ";
+				}
+				qq = " select d.name department,p.phoneNumber phone,pl.name name from phones p "+
+						" left join departments d on p.department_id=d.id "+
+						" left join pline_phones pp on pp.phone_id=p.id  "+
+						" left join plines pl on pl.id =pp.line_id ";
+				qo = " order by department, phone, name ";
+				if(!qw.equals("")){
+						qq += " where "+qw;
+				}
+				con = Helper.getConnection();
+				if(con == null){
+						msg = "Could not connect ";
+						return msg;
+				}				
+				qq += qo;
+				all = new ArrayList<>();
+				try{
+						pstmt = con.prepareStatement(qq);
+						int jj=1;
+						if(!department_id.equals("")){
+								pstmt.setString(jj++, department_id);
+						}				
+						rs = pstmt.executeQuery();						
+						while(rs.next()){
+								if(rows == null)
+										rows = new ArrayList<>();										
+								String str = rs.getString(1);
+								if(str == null || str.equals("")) str = "Unknown";
+								String str2 = rs.getString(2);
+								String str3 = rs.getString(3);
+								if(str3 == null || str3.equals("")) str3 = "Unknown";
+								ReportRow one = new ReportRow(debug, 3);
+								one.setRow(str, str2, str3);
+								rows.add(one);
+						}
+				}catch(Exception e){
+						msg += e+":"+qq;
+						logger.error(msg);
+				}
+				finally{
+						Helper.databaseDisconnect(con, pstmt, rs);
+				}		
+				return msg;						
 		}
 		public String findStats(){
 		

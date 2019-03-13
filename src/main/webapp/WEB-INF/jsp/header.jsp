@@ -64,6 +64,7 @@
 								<br />
 								<a href="./managePhones.action">Manage Phones</a>
 								<a href="./report.action">Stats Report</a>
+								<a href="./reportPhone.action">Phones Report</a>								
 								<a href="./paymentReport.action">Payments Report</a>
 								<a href="./payment.action">Payments</a>				
 								<a href="./vendor.action">Vendors</a>

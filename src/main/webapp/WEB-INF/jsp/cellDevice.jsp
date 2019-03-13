@@ -82,7 +82,7 @@
 			
 			<dl class="fn1-output-field">
 				<dt>SIM Number </dt>
-				<dd><s:textfield name="cellDevice.simNum" value="%{cellDevice.simNum}" size="12" maxlength="12" required="true" />* </dd>
+				<dd><s:textfield name="cellDevice.simNum" value="%{cellDevice.simNum}" size="25" maxlength="25" required="true" />* </dd>
 			</dl>
 			<dl class="fn1-output-field">
 				<dt>Device IMEI </dt>

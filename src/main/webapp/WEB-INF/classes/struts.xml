@@ -148,6 +148,14 @@
 			<result name="error">/WEB-INF/jsp/reportInput.jsp</result>
 			<result name="success">/WEB-INF/jsp/reportStats.jsp</result>
 		</action>
+		<action name="reportPhone" 
+						class="phone.ReportPhoneAction" 
+						method="execute">
+			<result name="input">/WEB-INF/jsp/reportInput2.jsp</result>		
+			<result name="error">/WEB-INF/jsp/reportInput2.jsp</result>
+			<result name="success">/WEB-INF/jsp/reportPhones.jsp</result>
+			<result name="csv">/WEB-INF/jsp/reportPhonesCsv.jsp</result>			
+		</action>		
 		<action name="paymentReport" 
 						class="phone.PaymentReportAction" 
 						method="execute">

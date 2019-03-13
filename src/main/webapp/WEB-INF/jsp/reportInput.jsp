@@ -6,7 +6,7 @@
 	-->
 <%@  include file="header.jsp" %>
 <s:form action="report" method="post">    
-  <h3> Phones Report</h3>
+  <h3> Phones Stats Report</h3>
   <s:if test="hasActionErrors()">
 		<div class="errors">
       <s:actionerror/>

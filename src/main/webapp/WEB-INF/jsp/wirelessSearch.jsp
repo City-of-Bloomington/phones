@@ -54,7 +54,7 @@
 		</dl>
 		<dl class="fn1-output-field">
 			<dt>SIM # </dt>
-			<dd><s:textfield name="cellst.simNum" value="%{cellst.simNum}" size="20" maxlength="20" title="sim number" /> </dd>
+			<dd><s:textfield name="cellst.simNum" value="%{cellst.simNum}" size="25" maxlength="25" title="sim number" /> </dd>
 		</dl>			
 		<s:if test="hasDepartments()">			
 			<dl class="fn1-output-field">

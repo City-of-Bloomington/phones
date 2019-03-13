@@ -223,8 +223,17 @@ public class Billing extends CommonInc implements java.io.Serializable{
 		}		
     //
     public String toString(){
-				return name;
+				return getInfo2();
     }
+		public String getInfo2(){
+				String ret = name;
+				String str = getDepartmentInfo();
+				if(str != null && !str.equals("")){
+						if(!ret.equals("")) ret += ", ";
+						ret += str;
+				}
+				return ret;
+		}
 		public boolean equals(Object obj){
 				if(obj instanceof Billing){
 						Billing one =(Billing)obj;

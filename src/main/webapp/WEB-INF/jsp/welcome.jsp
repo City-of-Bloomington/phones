@@ -5,7 +5,7 @@
     <s:actionerror/>
   </div>
 </s:if>
-			
+<div class="tt-row-container">			
 Please Select one of the following options from the top menu:
 <ul>
 	<li> To add a new phone line, select 'Phones' tab</li>
@@ -16,5 +16,6 @@ Please Select one of the following options from the top menu:
 	<li> To run reports, select the 'Reports'</li>
 	<li> When you are done, click on your name link in top and then click 'Logout' </li>
 </ul>
+</div>
 
 <%@  include file="footer.jsp" %>
