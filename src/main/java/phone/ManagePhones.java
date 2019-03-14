@@ -94,9 +94,7 @@ public class ManagePhones extends CommonInc{
 				if(!back.equals("")){
 						System.err.println(back);
 				}
-				// System.err.println(" ldap found "+ldapEmps.size());
 				back = getEmplistFromDb();
-				// System.err.println(" db found "+dbEmps.size());
 				//
 				// find all emps who are not in Ldap any more to be removed
 				//
@@ -109,7 +107,6 @@ public class ManagePhones extends CommonInc{
 								back += one.doSave();
 						}
 				}
-				// System.err.println(" discard "+discardEmps.size());
 				//
 				// find all new ones in ldap to be added to DB
 				//

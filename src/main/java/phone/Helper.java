@@ -219,6 +219,7 @@ public class Helper{
 						if(val2.substring(3,4).equals(" ")){
 								val2 = val2.substring(0,3)+"-"+val2.substring(4);
 						}
+						val2 = val2.toLowerCase();
 						if(val2.indexOf("ext") > -1){
 								try{
 										phone_number = val2.substring(0, val2.indexOf("ext")-1).trim();
@@ -234,12 +235,12 @@ public class Helper{
 				return phone_number;
 		}
 		public final static String getExtNumberCleaned(final String val){
-				String val2 = val;
+				String val2 = val.toLowerCase();
 				String ext_number = "";
 				try{
 						if(val2.indexOf("ext") > -1){
 								try{
-										ext_number = val2.substring(val2.indexOf("ext")+4);
+										ext_number = val2.substring(val2.indexOf("ext")+4).trim();
 								}catch(Exception ex){}
 						}
 				}
