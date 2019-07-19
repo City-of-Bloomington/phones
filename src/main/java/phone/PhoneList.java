@@ -519,7 +519,7 @@ public class PhoneList extends CommonInc{
 						addError(back);
 				}
 				finally{
-						Helper.databaseDisconnect(con, pstmt, rs);
+						Helper.databaseDisconnect(con, pstmt, pstmt2, rs);
 				}
 				return back;
 		}

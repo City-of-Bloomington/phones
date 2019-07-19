@@ -129,7 +129,7 @@ public class PhoneExt extends CommonInc{
 				String back = "";
 		
 				Connection con = null;
-				PreparedStatement pstmt = null;
+				PreparedStatement pstmt = null, pstmt2=null;
 				ResultSet rs = null;
 				String qq = "insert into phone_exts values(0,?,?,?)";
 				if(ext_number.equals("") && mail_box.equals("")){
@@ -169,8 +169,8 @@ public class PhoneExt extends CommonInc{
 						if(debug){
 								logger.debug(qq);
 						}
-						pstmt = con.prepareStatement(qq);				
-						rs = pstmt.executeQuery();
+						pstmt2 = con.prepareStatement(qq);				
+						rs = pstmt2.executeQuery();
 						if(rs.next()){
 								id = rs.getString(1);
 						}
@@ -181,7 +181,7 @@ public class PhoneExt extends CommonInc{
 						addError(back);
 				}
 				finally{
-						Helper.databaseDisconnect(con, pstmt, rs);
+						Helper.databaseDisconnect(con, pstmt, pstmt2, rs);
 				}
 				return back;
 

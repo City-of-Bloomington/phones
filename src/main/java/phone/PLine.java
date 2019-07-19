@@ -204,7 +204,7 @@ public class PLine extends CommonInc implements java.io.Serializable{
     public String doSave(){
 		
 				Connection con = null;
-				PreparedStatement stmt = null;
+				PreparedStatement stmt = null, stmt2=null;
 				ResultSet rs = null;		
 		
 				String str="", msg="";
@@ -236,8 +236,8 @@ public class PLine extends CommonInc implements java.io.Serializable{
 						if(debug){
 								logger.debug(qq);
 						}
-						stmt = con.prepareStatement(qq);				
-						rs = stmt.executeQuery();
+						stmt2 = con.prepareStatement(qq);				
+						rs = stmt2.executeQuery();
 						if(rs.next())
 								id = rs.getString(1);
 				}
@@ -248,7 +248,7 @@ public class PLine extends CommonInc implements java.io.Serializable{
 						return msg;
 				}
 				finally{
-						Helper.databaseDisconnect(con, stmt, rs);
+						Helper.databaseDisconnect(con, stmt, stmt2, rs);
 				}
 
 				return msg; // success
@@ -321,7 +321,7 @@ public class PLine extends CommonInc implements java.io.Serializable{
 
 				String qq = "",qq2="", msg="";
 				Connection con = null;
-				PreparedStatement stmt = null;
+				PreparedStatement stmt = null, stmt2=null;
 				ResultSet rs = null;			
 				qq  = "delete from pline_phones where line_id=?";
 				qq2 = "delete from plines where id=?";
@@ -335,9 +335,9 @@ public class PLine extends CommonInc implements java.io.Serializable{
 						stmt = con.prepareStatement(qq);
 						stmt.setString(1,id);
 						stmt.executeUpdate();
-						stmt = con.prepareStatement(qq2);
-						stmt.setString(1,id);
-						stmt.executeUpdate();						
+						stmt2 = con.prepareStatement(qq2);
+						stmt2.setString(1,id);
+						stmt2.executeUpdate();						
 						message="Deleted Successfully";
 						//
 				}
@@ -347,7 +347,7 @@ public class PLine extends CommonInc implements java.io.Serializable{
 						addError(msg);
 				}
 				finally{
-						Helper.databaseDisconnect(con, stmt, rs);
+						Helper.databaseDisconnect(con, stmt, stmt2, rs);
 				}			
 				return msg; 
     }

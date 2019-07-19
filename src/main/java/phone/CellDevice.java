@@ -481,7 +481,7 @@ public class CellDevice extends CommonInc implements java.io.Serializable{
     public String doSave(){
 		
 				Connection con = null;
-				PreparedStatement stmt = null;
+				PreparedStatement stmt = null, stmt2=null;
 				ResultSet rs = null;		
 				inactive = "";
 				String str="", msg="";
@@ -510,8 +510,8 @@ public class CellDevice extends CommonInc implements java.io.Serializable{
 								if(debug){
 										logger.debug(qq);
 								}
-								stmt = con.prepareStatement(qq);				
-								rs = stmt.executeQuery();
+								stmt2 = con.prepareStatement(qq);				
+								rs = stmt2.executeQuery();
 								if(rs.next())
 										id = rs.getString(1);
 						}
@@ -523,7 +523,7 @@ public class CellDevice extends CommonInc implements java.io.Serializable{
 						return msg;
 				}
 				finally{
-						Helper.databaseDisconnect(con, stmt, rs);
+						Helper.databaseDisconnect(con, stmt, stmt2, rs);
 				}
 				return msg; // success
     }
