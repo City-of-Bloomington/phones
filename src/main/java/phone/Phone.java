@@ -341,7 +341,13 @@ public class Phone extends CommonInc implements java.io.Serializable{
 								billing = one;
 						}
 				}
+				if(billing == null){
+						billing = new Billing();
+				}
 				return billing;
+		}
+		public boolean hasBilling(){
+				return !billing_id.equals("");
 		}
 		public Type getAddress(){
 				if(address == null && !address_id.equals("")){
@@ -350,6 +356,9 @@ public class Phone extends CommonInc implements java.io.Serializable{
 						if(back.equals("")){
 								address = one;
 						}
+				}
+				if(address == null){
+						address = new Type(debug);
 				}
 				return address;
 		}
