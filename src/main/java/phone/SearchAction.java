@@ -63,6 +63,17 @@ public class SearchAction extends TopAction{
 								if(ones == null || ones.size() == 0){
 										addActionMessage("No match found");
 								}
+								else if(ones.size() == 1){
+										Phone phone = ones.get(0);
+										try{
+												HttpServletResponse res = ServletActionContext.getResponse();
+												String str = url+"phone.action?id="+phone.getId();
+												res.sendRedirect(str);
+												return super.execute();
+										}catch(Exception ex){
+												System.err.println(ex);
+										}										
+								}
 								else{
 										phones = ones;
 										phonesTitle="Found "+total+" records";
