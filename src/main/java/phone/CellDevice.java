@@ -693,12 +693,25 @@ public class CellDevice extends CommonInc implements java.io.Serializable{
 		
 				String str="", msg="";
 				String qq = "";
-				qq = "update cell_devices set make=?,model=?, wireless_num=?,"+
-						" device_imei=?,sim_num=?, service_type=?,"+
-						" device_effective_date=?, user_effective_date=?,"+
-						" user_name=?, user_type=?, department_id=?,"+
-						" division_id=?, billing_id=?,"+
-						" contract_start_date=?,contract_end_date=?,"+
+				qq = "update cell_devices set "+
+						" make=?,"+
+						" model=?,"+
+						" wireless_num=?,"+
+						" device_imei=?,"+
+						" sim_num=?, "+
+						
+						" service_type=?,"+
+						" device_effective_date=?, "+
+						" user_effective_date=?,"+
+						" user_name=?, "+
+						" user_type=?, "+
+						
+						" department_id=?,"+
+						" division_id=?, "+
+						" billing_id=?,"+
+						" contract_start_date=?,"+
+						" contract_end_date=?,"+
+						
 						" notes=?, "+
 						" inactive=?"+
 						" where id=?";
@@ -720,7 +733,7 @@ public class CellDevice extends CommonInc implements java.io.Serializable{
 						stmt = con.prepareStatement(qq);
 						msg = setParams(stmt);
 						if(msg.equals("")){
-								stmt.setString(19, id);
+								stmt.setString(18, id);
 								stmt.executeUpdate();
 						}
 				}
