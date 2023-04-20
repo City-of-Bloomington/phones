@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <constant name="struts.devMode" value="true" />
+  <constant name="struts.ui.theme" value="simple" />
+  <constant name="struts.action.excludePattern" value="/Login*,/Logout*,/EmployeeService*,/doDownload*" />
+
+  <package name="default" extends="struts-default">
+
+    <!-- this is a global action that makes sure user is logged in -->
+    
+    <global-results>
+      <result name="Login" type="redirect">welcome.action</result>
+    </global-results>
+		
+    <action name="home">
+      <interceptor-ref name="defaultStack"></interceptor-ref>
+      <result>/Login</result>
+    </action>
+    
+    <action name="welcome"
+	    class="phone.action.WelcomeAction">
+      <result name="success">/WEB-INF/jsp/welcome.jsp</result>
+      <result name="error">/Login</result>			
+      <result name="login">/Login</result>	   
+    </action>
+    <action name="phone" 
+	    class="phone.action.PhoneAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/phone.action.jsp</result>		
+      <result name="error">/WEB-INF/jsp/phone.jsp</result>
+      <result name="success">/WEB-INF/jsp/phone.jsp</result>
+      <result name="view">/WEB-INF/jsp/phone.jsp</result>
+    </action>
+    <action name="cellDevice" 
+	    class="phone.action.CellDeviceAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/cellDevice.jsp</result>		
+      <result name="error">/WEB-INF/jsp/cellDevice.jsp</result>
+      <result name="success">/WEB-INF/jsp/cellDevice.jsp</result>
+      <result name="view">/WEB-INF/jsp/cellDevice.jsp</result>
+    </action>		
+    <action name="circuit" 
+	    class="phone.action.CircuitAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/circuit.jsp</result>		
+      <result name="error">/WEB-INF/jsp/circuit.jsp</result>
+      <result name="success">/WEB-INF/jsp/circuit.jsp</result>
+    </action>
+    <action name="pline" 
+	    class="phone.action.PLineAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/pline.jsp</result>		
+      <result name="error">/WEB-INF/jsp/pline.jsp</result>
+      <result name="success">/WEB-INF/jsp/pline.jsp</result>
+    </action>
+    <action name="import" 
+	    class="phone.action.DataImportAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/dataImport.jsp</result>		
+      <result name="error">/WEB-INF/jsp/dataImport.jsp</result>
+      <result name="success">/WEB-INF/jsp/dataImport.jsp</result>
+    </action>		
+    <action name="billing" 
+	    class="phone.action.BillingAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/billing.jsp</result>		
+      <result name="error">/WEB-INF/jsp/billing.jsp</result>
+      <result name="success">/WEB-INF/jsp/billing.jsp</result>
+    </action>
+    <action name="contract" 
+	    class="phone.action.ContractAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/contract.jsp</result>		
+      <result name="error">/WEB-INF/jsp/contract.jsp</result>
+      <result name="success">/WEB-INF/jsp/contract.jsp</result>
+    </action>		
+    <action name="managePhones" 
+	    class="phone.action.ManagePhonesAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/managePhones.jsp</result>		
+      <result name="error">/WEB-INF/jsp/managePhones.jsp</result>
+      <result name="success">/WEB-INF/jsp/managePhones.jsp</result>
+    </action>		
+    <action name="user" 
+	    class="phone.action.UserAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/user.jsp</result>		
+      <result name="error">/WEB-INF/jsp/user.jsp</result>
+      <result name="success">/WEB-INF/jsp/user.jsp</result>
+    </action>
+    <action name="payment" 
+	    class="phone.action.PaymentAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/payment.jsp</result>		
+      <result name="error">/WEB-INF/jsp/payment.jsp</result>
+      <result name="success">/WEB-INF/jsp/payment.jsp</result>
+    </action>		
+    <action name="vendor" 
+	    class="phone.action.VendorAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/vendor.jsp</result>		
+      <result name="error">/WEB-INF/jsp/vendor.jsp</result>
+      <result name="success">/WEB-INF/jsp/vendor.jsp</result>
+    </action>
+    <action name="address" 
+	    class="phone.action.AddressAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/address.jsp</result>		
+      <result name="error">/WEB-INF/jsp/address.jsp</result>
+      <result name="success">/WEB-INF/jsp/address.jsp</result>
+    </action>				
+    <action name="todispose" 
+	    class="phone.action.DisposeAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/todispose.jsp</result>		
+      <result name="error">/WEB-INF/jsp/todispose.jsp</result>
+      <result name="success">/WEB-INF/jsp/todispose.jsp</result>
+    </action>
+    <action name="search" 
+	    class="phone.action.SearchAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/search.jsp</result>		
+      <result name="error">/WEB-INF/jsp/search.jsp</result>
+      <result name="success">/WEB-INF/jsp/search.jsp</result>
+    </action>
+    <action name="wirelessSearch" 
+	    class="phone.action.SearchWirelessAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/wirelessSearch.jsp</result>		
+      <result name="error">/WEB-INF/jsp/wirelessSearch.jsp</result>
+      <result name="success">/WEB-INF/jsp/wirelessSearch.jsp</result>
+    </action>		
+    <action name="contractSearch" 
+	    class="phone.action.ContractSearchAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/contractSearch.jsp</result>		
+      <result name="error">/WEB-INF/jsp/contractSearch.jsp</result>
+      <result name="success">/WEB-INF/jsp/contractSearch.jsp</result>
+    </action>		
+    <action name="report" 
+	    class="phone.action.ReportAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/reportInput.jsp</result>		
+      <result name="error">/WEB-INF/jsp/reportInput.jsp</result>
+      <result name="success">/WEB-INF/jsp/reportStats.jsp</result>
+    </action>
+    <action name="reportPhone" 
+	    class="phone.action.ReportPhoneAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/reportInput2.jsp</result>		
+      <result name="error">/WEB-INF/jsp/reportInput2.jsp</result>
+      <result name="success">/WEB-INF/jsp/reportPhones.jsp</result>
+      <result name="csv">/WEB-INF/jsp/reportPhonesCsv.jsp</result>			
+    </action>		
+    <action name="paymentReport" 
+	    class="phone.action.PaymentReportAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/paymentReportInput.jsp</result>		
+      <result name="error">/WEB-INF/jsp/paymentReportInput.jsp</result>
+      <result name="success">/WEB-INF/jsp/reportPayments.jsp</result>
+      <result name="charts">/WEB-INF/jsp/paymentChart.jsp</result>
+    </action>		
+    <action name="doUpload" 
+	    class="phone.action.UploadAction" 
+	    method="execute">
+      <result name="input">/WEB-INF/jsp/fileUpload.jsp</result>		
+      <result name="error">/WEB-INF/jsp/fileUpload.jsp</result>
+      <result name="success">/WEB-INF/jsp/fileUpload.jsp</result>
+    </action>
+  </package>
+
+</struts>
