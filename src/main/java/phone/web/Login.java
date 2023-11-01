@@ -19,7 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import phone.model.*;
 
-@WebServlet(urlPatterns = {"/Login"})
+@WebServlet(urlPatterns = {"/CasLogin"})
 public class Login extends TopServlet{
 
     static Logger logger = LogManager.getLogger(Login.class);
@@ -41,18 +41,18 @@ public class Login extends TopServlet{
 	String host = req.getHeader("host");	
 								
 	if(host_forward != null){
-	    url = host_forward+"/phones/";
+	    System.err.println(" host_forward "+host_forward);
+	    url = "https://"+host_forward+"/phones/";
 	}
 	else if(host != null){
+	    /**
 	    if(host.indexOf("phones") > -1){
 		url = host;
 	    }
 	    else{
 		url = host+"/phones/";
 	    }
-	}
-	else{
-	    url  = getServletContext().getInitParameter("url");
+	    */
 	}
 	Enumeration<String> values = req.getParameterNames();				
 	while (values.hasMoreElements()) {
@@ -87,7 +87,6 @@ public class Login extends TopServlet{
 	}
 	if(username != null && !username.equals("")){
 	    session = req.getSession(false);			
-	    String url2 = url;
 	    User user = getUser(username);
 	    if(user != null && session != null){
 		session.setAttribute("user",user);

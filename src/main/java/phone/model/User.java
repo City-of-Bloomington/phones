@@ -219,7 +219,7 @@ public class User extends CommonInc implements java.io.Serializable{
 	    if(!id.equals(""))
 		stmt.setString(1, id);
 	    else
-		stmt.setString(1, username);								
+		stmt.setString(1, username);
 	    rs = stmt.executeQuery();
 	    if(rs.next()){
 		setId(rs.getString(1));

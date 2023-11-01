@@ -6,7 +6,7 @@
 <struts>
   <constant name="struts.devMode" value="true" />
   <constant name="struts.ui.theme" value="simple" />
-  <constant name="struts.action.excludePattern" value="/Login*,/Logout*,/EmployeeService*,/doDownload*" />
+  <constant name="struts.action.excludePattern" value="/Login*,/Logout*,/EmployeeService*,/doDownload*,/callback*" />
 
   <package name="default" extends="struts-default">
 
@@ -20,6 +20,11 @@
       <interceptor-ref name="defaultStack"></interceptor-ref>
       <result>/Login</result>
     </action>
+    <action name="adminOptions">
+      <interceptor-ref name="defaultStack"></interceptor-ref>
+      <result name="success">/WEB-INF/jsp/adminOptions.jsp</result>
+      <result name="error">/Login</result>			
+    </action>    
     
     <action name="welcome"
 	    class="phone.action.WelcomeAction">

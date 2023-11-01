@@ -30,7 +30,7 @@ import phone.utils.*;
  */
 // uncomment this line if you want to use ADFS
 //
-@WebServlet(urlPatterns = {"/OpenIdLogin"})
+@WebServlet(urlPatterns = {"/Login"})
 public class LoginServlet extends TopServlet {
 
     static Logger logger = LogManager.getLogger(LoginServlet.class);
@@ -55,6 +55,7 @@ public class LoginServlet extends TopServlet {
 		response.sendRedirect(redirectUrl.toString());
 	    }
 	    else{
+		System.err.println(" url "+url);
 		PrintWriter out = response.getWriter();
 		String str ="<head><title></title><META HTTP-EQUIV=\""+
 		    "refresh\" CONTENT=\"0; URL=" + url +
@@ -71,5 +72,10 @@ public class LoginServlet extends TopServlet {
 	    logger.error(""+ex);
 	    System.err.println(" "+ex);
 	}
+    }
+    @Override
+    public void doPost(HttpServletRequest request,
+		       HttpServletResponse response){
+	doGet(request, response);
     }
 }

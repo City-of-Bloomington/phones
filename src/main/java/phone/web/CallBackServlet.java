@@ -24,7 +24,6 @@ import phone.utils.*;
 @WebServlet(urlPatterns = {"/callback"})
 public class CallBackServlet extends TopServlet {
     static Logger logger = LogManager.getLogger(CallBackServlet.class);				
-    boolean debug = false;
     public void doGet(HttpServletRequest request,
 		      HttpServletResponse response)
 	throws IOException {
@@ -76,7 +75,7 @@ public class CallBackServlet extends TopServlet {
 	    }
 	}
 	if(error_flag){
-	    out.println("<head><title>Promt</title></head>");
+	    out.println("<head><title>Phones</title></head>");
 	    out.println("<body><center>");
 	    out.println("<p><font color=red>Unauthorized access, check with IT"+
 			", or try again later.</font></p>");

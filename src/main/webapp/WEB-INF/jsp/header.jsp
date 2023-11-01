@@ -13,11 +13,14 @@
 	<s:head />
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 	<link rel="SHORTCUT ICON" href="./images/favicon.ico" />
+	<link rel="stylesheet" href="<s:property value='#application.url' />css/jquery-ui.min-1.13.2.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="<s:property value='#application.url' />css/jquery-ui.theme.min-1.13.2.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="<s:property value='#application.url' />css/open-sans/open-sans.css" type="text/css" />
 	<link rel="stylesheet" href="//bloomington.in.gov/static/fn1-releases/dev/css/default.css" type="text/css" />
 	<link rel="stylesheet" href="//bloomington.in.gov/static/fn1-releases/dev/css/kirkwood.css" type="text/css" />
-	<link rel="stylesheet" href="./js/ol.css" type="text/css" />
-
-  
+	<link rel="stylesheet" href="<s:property value='#application.url' />css/screen.css" type="text/css" />
+	<link rel="stylesheet" href="<s:property value='#application.url' />css/ol.css" type="text/css" />
+	<link rel="stylesheet" href="<s:property value='#application.url' />css/ol3-popup.css" type="text/css" />
 	<style>
 	table.money th{
 		text-align:center;
@@ -50,44 +53,29 @@
       </div>
       <s:if test="#session != null && #session.user != null">
         <div class="fn1-site-utilityBar">
-          <nav id="user_menu">
-            <div class="menuLauncher"><s:property value='#session.user.fullname' /></div>
-            <div class="menuLinks closed" style="background-color:wheat">
-							<br />
-              <a href="<s:property value='#application.url'/>Logout">Logout</a>
-            </div>
-          </nav>
-          <s:if test="#session.user.isAdmin()">					
-						<nav id="admin_menu">
-							<div class="menuLauncher">Admin</div>
-							<div class="menuLinks closed" style="background-color:wheat">
-								<br />
-								<a href="./managePhones.action">Manage Phones</a>
-								<a href="./report.action">Stats Report</a>
-								<a href="./reportPhone.action">Phones Report</a>								
-								<a href="./paymentReport.action">Payments Report</a>
-								<a href="./payment.action">Payments</a>				
-								<a href="./vendor.action">Vendors</a>
-								<a href="./address.action">Addresses</a>								
-								<a href="./user.action">Users</a>
-								<a href="./import.action">Data Import</a>								
-							</div>
-						</nav>
-          </s:if>
+            <nav id="user_menu">
+		<div class="menuLauncher"><s:property value='#session.user.fullname' /></div>
+		<div class="menuLauncher">		
+		    <a href="<s:property value='#application.url'/>Logout">Logout</a>
+		</div>
+            </nav>
         </div>
+      </s:if>
+    </div>
+    <div class="fn1-nav1">
+	<nav class="fn1-nav1-container">
+	    <a href="<s:property value='#application.url'/>phone.action">Phones</a>
+	  <a href="<s:property value='#application.url'/>circuit.action">Special Circuits</a>
+	  <a href="<s:property value='#application.url'/>cellDevice.action">Cell Devices</a>
+	  <a href="<s:property value='#application.url'/>billing.action">Billing</a>
+	  <a href="<s:property value='#application.url'/>contract.action">Contract</a>				
+	  <a href="<s:property value='#application.url'/>pline.action">Line Users</a>
+	  <a href="<s:property value='#application.url'/>todispose.action">Dispose Lines</a>
+	  <a href="<s:property value='#application.url'/>search.action">Land Line Search</a>
+	  <a href="<s:property value='#application.url'/>wirelessSearch.action">Wireless Search</a>
+          <s:if test="#session.user.isAdmin()">
+	      <a href="<s:property value='#application.url'/>adminOptions.action">Admin Options</a>
 	  </s:if>
-	</div>
-	<div class="fn1-nav1">
-      <nav class="fn1-nav1-container">
-				<a href="<s:property value='#application.url'/>phone.action">Phones</a>
-				<a href="<s:property value='#application.url'/>circuit.action">Special Circuits</a>
-				<a href="<s:property value='#application.url'/>cellDevice.action">Cell Devices</a>
-				<a href="<s:property value='#application.url'/>billing.action">Billing</a>
-				<a href="<s:property value='#application.url'/>contract.action">Contract</a>				
-				<a href="<s:property value='#application.url'/>pline.action">Line Users</a>
-				<a href="<s:property value='#application.url'/>todispose.action">Dispose Lines</a>
-				<a href="<s:property value='#application.url'/>search.action">Land Line Search</a>
-				<a href="<s:property value='#application.url'/>wirelessSearch.action">Wireless Search</a>
       </nav>
     </div>
   </header>

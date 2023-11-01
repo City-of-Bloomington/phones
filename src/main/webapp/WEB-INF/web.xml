@@ -10,7 +10,6 @@
     <display-name>Phones</display-name>
     <description>
     </description>
-
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -20,7 +19,8 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
+
+  <!--
   <filter>
     <filter-name>CAS Authentication Filter</filter-name>
     <filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
@@ -33,6 +33,7 @@
     <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
     <filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
   </filter>
+  
   <filter-mapping>
     <filter-name>CAS Authentication Filter</filter-name>
     <url-pattern>/Login</url-pattern>
@@ -46,6 +47,7 @@
     <url-pattern>/Login</url-pattern>
   </filter-mapping>
 
+-->
   <error-page>
     <error-code>404</error-code>
     <location>/error.html</location>
