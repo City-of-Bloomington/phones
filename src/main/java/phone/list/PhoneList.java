@@ -525,6 +525,28 @@ public class PhoneList extends CommonInc{
 	}
 	return back;
     }
+    /**
+	select p.phoneNumber,
+	   p.location,
+	   p.signal_type,
+	   p.type,
+	   l.name,
+	   l.type,
+	   pe.ext_number,
+	   dp.name Dept,
+	   dv.name Division
+	   from phones p
+	   left join departments dp on p.department_id=dp.id
+	   left join divisions dv on p.division_id=dv.id
+	   left join pline_phones pl on p.id=pl.phone_id 	     
+	   left join plines l on l.id=pl.line_id
+	   left join phone_exts pe on pe.id=pl.ext_id
+	   INTO OUTFILE '/var/lib/mysql-files/phone_data.csv'
+	   FIELDS TERMINATED BY ','
+	   LINES TERMINATED BY '\n';
+	   
+
+     */
 }
 
 
